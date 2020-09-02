@@ -87,3 +87,5 @@
               :show-target (lambda (_target) "delete")
               :action (lambda (docid _msg target) (mu4e~proc-remove docid))))
     )
+
+(setq tab-always-indent t)
