@@ -89,6 +89,6 @@
   (setq mu4e-get-mail-command (format "INSIDE_EMACS=%s mbsync -a" emacs-version)
         epa-pinentry-mode 'ask)
   (pinentry-start)
-    )
+  )
 
 (setq tab-always-indent t)

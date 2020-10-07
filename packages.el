@@ -36,6 +36,7 @@
 ;; you can do so here with the `:disable' property:
 ;(package! builtin-package :disable t)
 (package! org-mu4e :disable t)
+(package! org-msg :disable t)
 
 
 ;; You can override the recipe of a built in package without having to specify
