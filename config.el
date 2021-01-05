@@ -91,4 +91,6 @@
   (pinentry-start)
   )
 
+(setq doom-font (font-spec :family "Liberation Mono" :size 14))
+
 (setq tab-always-indent t)
