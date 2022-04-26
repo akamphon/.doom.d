@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+(setq doom-font (font-spec :family "Liberation Mono" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -91,6 +91,20 @@
   (pinentry-start)
   )
 
-(setq doom-font (font-spec :family "Liberation Mono" :size 14))
+;;(setq doom-font (font-spec :family "Liberation Mono" :size 14))
 
 (setq tab-always-indent t)
+
+(eval-after-load "ox-latex"
+  '(add-to-list 'org-latex-classes
+                '("tufte-book"
+                  "\\documentclass{tufte-book}"
+                  ("\\part{%s}" . "\\part*{%s}")
+                  ("\\chapter{%s}" . "\\chapter*{%s}")
+                  ("\\section{%s}" . "\\section*{%s}")
+                  ("\\subsection{%s}" . "\\subsection*{%s}")
+                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+(setq org-babel-python-command "python")
