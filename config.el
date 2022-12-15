@@ -28,7 +28,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/gdrive/Org/")
+(setq org-directory "~/Org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -85,26 +85,27 @@
         (list :char '("D" . "x")
               :prompt "Delete"
               :show-target (lambda (_target) "delete")
-              :action (lambda (docid _msg target) (mu4e~proc-remove docid))))
+              :action (lambda (docid _msg target) (mu4e--server-remove docid))))
   (setq mu4e-get-mail-command (format "INSIDE_EMACS=%s mbsync -a" emacs-version)
         epa-pinentry-mode 'ask)
   (pinentry-start)
   )
 
-;;(setq doom-font (font-spec :family "Liberation Mono" :size 14))
-
 (setq tab-always-indent t)
 
 (eval-after-load "ox-latex"
   '(add-to-list 'org-latex-classes
-                '("tufte-book"
-                  "\\documentclass{tufte-book}"
-                  ("\\part{%s}" . "\\part*{%s}")
+                '("kaobook"
+                  "\\documentclass{kaobook}"
                   ("\\chapter{%s}" . "\\chapter*{%s}")
                   ("\\section{%s}" . "\\section*{%s}")
                   ("\\subsection{%s}" . "\\subsection*{%s}")
                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  )
+
+(eval-after-load "ox-latex"
+  '(setq org-latex-compiler "xelatex"))
 
 (setq org-babel-python-command "python")
