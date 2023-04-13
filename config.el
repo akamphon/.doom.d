@@ -19,7 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Liberation Mono" :size 14))
+(set-fontset-font t 'thai "Laksaman")
+(setq doom-font (font-spec :family "Source Code Pro" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -73,19 +74,12 @@
 
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-stream-type 'starttls
-      smtpmail-starttls-credentials '(("smtp.gmail.com" "587" nil nil))
-      smtpmail-smtp-user "sup@engr.tu.ac.th"
+      ;smtpmail-smtp-user "sup@engr.tu.ac.th"
       smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
 
 (after! mu4e
-  (setf (alist-get 'delete mu4e-marks)
-        (list :char '("D" . "x")
-              :prompt "Delete"
-              :show-target (lambda (_target) "delete")
-              :action (lambda (docid _msg target) (mu4e--server-remove docid))))
   (setq mu4e-get-mail-command (format "INSIDE_EMACS=%s mbsync -a" emacs-version)
         epa-pinentry-mode 'ask)
   (pinentry-start)
